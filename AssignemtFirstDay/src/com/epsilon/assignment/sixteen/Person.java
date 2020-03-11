@@ -1,6 +1,6 @@
 //Assignment #16
 
-package com.epsilon.assignment.day.three;
+package com.epsilon.assignment.sixteen;
 
 import java.util.Arrays;
 

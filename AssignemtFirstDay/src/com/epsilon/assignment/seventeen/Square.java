@@ -1,4 +1,4 @@
-package com.epsilon.assignment.day.four;
+package com.epsilon.assignment.seventeen;
 
 public class Square extends Rectangle {
 	double side = 1.0;

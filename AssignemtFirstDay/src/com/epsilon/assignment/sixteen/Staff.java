@@ -1,4 +1,4 @@
-package com.epsilon.assignment.day.three;
+package com.epsilon.assignment.sixteen;
 
 public class Staff extends Person {
 	String school;

@@ -1,4 +1,4 @@
-package com.epsilon.assignment.day.four;
+package com.epsilon.assignment.seventeen;
 
 public class Rectangle extends Shape {
 	double width = 1.0;
