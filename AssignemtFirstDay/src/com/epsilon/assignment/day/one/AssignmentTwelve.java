@@ -1,36 +1,110 @@
 /*
- The function should return a random string, each time when called, 
-of required length (function argument). The password consists of lower 
-case and upper case alphabets, digits from 0 to 9, special characters ~!@#$%^&*
+ Write a function called "inWords" that takes a number between 1 and 99,99,99,999 and
+returns a String representing the input number in words.
 */
-
 package com.epsilon.assignment.day.one;
 
-import java.util.Random;
+import java.text.DecimalFormat;
 
 public class AssignmentTwelve {
-	public static String generatePassword(int length) {
 
-		String Capital_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		String Small_chars = "abcdefghijklmnopqrstuvwxyz";
-		String numbers = "0123456789";
-		String symbols = "~!@#$%^&*";
-		String values = Capital_chars + Small_chars + numbers + symbols;
+	private static final String[] tensNames = { "", " ten", " twenty", " thirty", " forty", " fifty", " sixty",
+			" seventy", " eighty", " ninety" };
 
-		Random generate = new Random();
+	private static final String[] numNames = { "", " one", " two", " three", " four", " five", " six", " seven",
+			" eight", " nine", " ten", " eleven", " twelve", " thirteen", " fourteen", " fifteen", " sixteen",
+			" seventeen", " eighteen", " nineteen" };
 
-		char[] password = new char[length];
+	private static String convertLessThanOneThousand(int number) {
+		String soFar;
 
-		for (int i = 0; i < length; i++) {
-			password[i] = values.charAt(generate.nextInt(values.length()));
+		if (number % 100 < 20) {
+			soFar = numNames[number % 100];
+			number /= 100;
+		} else {
+			soFar = numNames[number % 10];
+			number /= 10;
 
+			soFar = tensNames[number % 10] + soFar;
+			number /= 10;
 		}
-		String result = new String(password);
-		return result;
+		if (number == 0)
+			return soFar;
+		return numNames[number] + " hundred" + soFar;
+	}
+
+	public static String convert(long number) {
+
+		if (number == 0) {
+			return "zero";
+		}
+
+		String snumber = Long.toString(number);
+
+		String mask = "000000000000";
+		DecimalFormat df = new DecimalFormat(mask);
+		snumber = df.format(number);
+
+		int billions = Integer.parseInt(snumber.substring(0, 3));
+		int millions = Integer.parseInt(snumber.substring(3, 6));
+		int hundredThousands = Integer.parseInt(snumber.substring(6, 9));
+		int thousands = Integer.parseInt(snumber.substring(9, 12));
+
+		String tradBillions;
+		switch (billions) {
+		case 0:
+			tradBillions = "";
+			break;
+		case 1:
+			tradBillions = convertLessThanOneThousand(billions) + " billion ";
+			break;
+		default:
+			tradBillions = convertLessThanOneThousand(billions) + " billion ";
+		}
+		String result = tradBillions;
+
+		String tradMillions;
+		switch (millions) {
+		case 0:
+			tradMillions = "";
+			break;
+		case 1:
+			tradMillions = convertLessThanOneThousand(millions) + " million ";
+			break;
+		default:
+			tradMillions = convertLessThanOneThousand(millions) + " million ";
+		}
+		result = result + tradMillions;
+
+		String tradHundredThousands;
+		switch (hundredThousands) {
+		case 0:
+			tradHundredThousands = "";
+			break;
+		case 1:
+			tradHundredThousands = "one thousand ";
+			break;
+		default:
+			tradHundredThousands = convertLessThanOneThousand(hundredThousands) + " thousand ";
+		}
+		result = result + tradHundredThousands;
+
+		String tradThousand;
+		tradThousand = convertLessThanOneThousand(thousands);
+		result = result + tradThousand;
+
+		return result.replaceAll("^\\s+", "").replaceAll("\\b\\s{2,}\\b", " ");
 	}
 
 	public static void main(String[] args) {
-		System.out.println("The Generated Password is " + generatePassword(10));
+		System.out.println("0 is " + convert(0));
+		System.out.println("1 is " + convert(1));
+		System.out.println("10 is " + convert(10));
+		System.out.println("100 is " + convert(100));
+		System.out.println("153 is " + convert(153));
+		System.out.println("299 is " + convert(299));
+		System.out.println("2145665412 " + convert(2145665412));
+
 	}
 
 }

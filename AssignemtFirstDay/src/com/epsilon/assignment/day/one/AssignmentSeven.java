@@ -1,39 +1,36 @@
 /*
-In trignometry, the Sine of an angle is represented by the series below:
+Write a Java program to print the following pattern:
+
+*
+**
+***
+****
+*****
+The number of rows should be based on the value of a variable "num",
+and the number of stars in a row is based on the row number itself.
 */
+
 package com.epsilon.assignment.day.one;
 
 public class AssignmentSeven {
 
-	public static float sine(float x) {
-		float sin = 0.0f;
-		long fact;
-		for (int i = 1; i <= 30; i++) {
-			fact = 1;
-			for (int j = 1; j <= 2 * i - 1; j++) {
-				fact = fact * j;
+	public static void printPattern(int num) {
+		int k = 0;
+		for (int i = 1; i <= num; ++i, k = 0) {
+			for (int space = 1; space <= num - i; ++space) {
+				System.out.print("  ");
 			}
-			if (i % 2 == 1) {
-				sin = sin + (float) (powerOf(x, 2 * i - 1) / fact);
-			} else {
-				sin = sin - (float) (powerOf(x, 2 * i - 1) / fact);
+
+			while (k != 2 * i - 1) {
+				System.out.print("* ");
+				++k;
 			}
+
+			System.out.println();
 		}
-		return sin;
 	}
 
-	public static float powerOf(float base, int exponent) {
-		float result = 1;
-		for (int i = 1; i <= exponent; i++) {
-			result *= base;
-		}
-		return result;
-
-	}
-
-	public static void main(String args[]) {
-		float num = 1.57079632679f;
-		System.out.println("Sin(" + num + ") is Equal to " + sine(num));
-		System.out.println("Sin(" + 0 + ") is Equal to " + sine(0));
+	public static void main(String[] args) {
+		printPattern(5);
 	}
 }

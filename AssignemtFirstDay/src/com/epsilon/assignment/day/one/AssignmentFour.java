@@ -1,41 +1,30 @@
 /*
-Write a function called "sumOfPrimes", 
-that takes two integers as input and returns the sum of all the prime numbers between the same.
+Write a function called "sortThreeNumbers", 
+which takes 3 distinct integers and prints them in ascending order.
 */
 
 package com.epsilon.assignment.day.one;
 
+import java.util.Arrays;
+
 public class AssignmentFour {
 
-	public static boolean checkPrimes(int testNumber) {
-		int counter = 1;
-		for (int i = 1; i < testNumber; i++) {
-			if (testNumber % i == 0) {
-				counter++;
-			}
+	public static void sortThreeNumbers(int a, int b, int c) {
+		{
+			int array[] = { a, b, c };
+
+			Arrays.sort(array);
+
+			for (int i = 0; i < 3; i++)
+				System.out.print(array[i] + " ");
 		}
-		if (counter == 2) {
-			return true;
-
-		}
-		return false;
-
-	}
-
-	public static int sumOfPrimes(int from, int to) {
-		int sum = 0;
-		for (int i = from + 1; i < to; i++) {
-			if (checkPrimes(i)) {
-				sum = sum + i;
-			}
-		}
-
-		System.out.println("Sum of Prime Number Between Range is " + sum);
-		return 0;
+		System.out.println(" ");
 	}
 
 	public static void main(String[] args) {
-		sumOfPrimes(2, 7);
+		sortThreeNumbers(1, 2, 3);
+		sortThreeNumbers(4, 2, 20);
+		sortThreeNumbers(85, 12, 36);
 	}
 
 }

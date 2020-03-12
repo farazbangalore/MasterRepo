@@ -1,42 +1,39 @@
 /*
-Implement the Java function listed below:
-
-public static void printCalendar(int month, int year) {
-	/// do stuff here
-}
+In trignometry, the Sine of an angle is represented by the series below:
 */
 package com.epsilon.assignment.day.one;
 
 public class AssignmentEight {
 
-	public static void printCalendar(int month, int year) {
-		int spaces = 1;
-		String[] months = { "", "January", "February", "March", "April", "May", "June", "July", "August", "September",
-				"October", "November", "December" };
-
-		int[] days = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-
-		if ((((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) && month == 2)
-			days[month] = 29;
-
-		System.out.println("          " + months[month] + " " + year);
-
-		System.out.println("   Sun  Mon Tue   Wed Thu   Fri  Sat");
-
-		spaces = (days[month - 1] + spaces) % 7;
-
-		for (int i = 0; i < spaces; i++)
-			System.out.print("     ");
-		for (int i = 1; i <= days[month]; i++) {
-			System.out.printf(" %3d ", i);
-			if (((i + spaces) % 7 == 0) || (i == days[month]))
-				System.out.println();
+	public static float sine(float x) {
+		float sin = 0.0f;
+		long fact;
+		for (int i = 1; i <= 30; i++) {
+			fact = 1;
+			for (int j = 1; j <= 2 * i - 1; j++) {
+				fact = fact * j;
+			}
+			if (i % 2 == 1) {
+				sin = sin + (float) (powerOf(x, 2 * i - 1) / fact);
+			} else {
+				sin = sin - (float) (powerOf(x, 2 * i - 1) / fact);
+			}
 		}
-		System.out.println();
+		return sin;
 	}
 
-	public static void main(String[] args) {
-		printCalendar(8, 2018);
-		printCalendar(3, 2020);
+	public static float powerOf(float base, int exponent) {
+		float result = 1;
+		for (int i = 1; i <= exponent; i++) {
+			result *= base;
+		}
+		return result;
+
+	}
+
+	public static void main(String args[]) {
+		float num = 1.57079632679f;
+		System.out.println("Sin(" + num + ") is Equal to " + sine(num));
+		System.out.println("Sin(" + 0 + ") is Equal to " + sine(0));
 	}
 }

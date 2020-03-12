@@ -1,30 +1,35 @@
 /*
-Write a function called "sortThreeNumbers", 
-which takes 3 distinct integers and prints them in ascending order.
+Implement the body for the following function:
+
+static boolean isPrimeNumber(int num) { 
+	// do stuff here
+	return false; 
+}
+The function should check and return true only if the number passed as argument is a prime number.
+
+Write a Java program to call the above function multiple times with different values.
 */
 
 package com.epsilon.assignment.day.one;
 
-import java.util.Arrays;
-
 public class AssignmentThree {
 
-	public static void sortThreeNumbers(int a, int b, int c) {
-		{
-			int array[] = { a, b, c };
-
-			Arrays.sort(array);
-
-			for (int i = 0; i < 3; i++)
-				System.out.print(array[i] + " ");
+	public static int isPrimeNumber(int num) {
+		int counter = 1;
+		for (int i = 1; i < num; i++) {
+			if (num % i == 0) {
+				counter++;
+			}
 		}
-		System.out.println(" ");
+		if (counter == 2) {
+			System.out.println("Given Number is Prime");
+		} else
+			System.out.println("Given Number is Not a Prime");
+
+		return 0;
 	}
 
 	public static void main(String[] args) {
-		sortThreeNumbers(1, 2, 3);
-		sortThreeNumbers(4, 2, 20);
-		sortThreeNumbers(85, 12, 36);
+		isPrimeNumber(3);
 	}
-
 }

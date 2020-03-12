@@ -1,42 +1,42 @@
 /*
- Write a function called "sumOfEvensAndOdds", that takes an array of integers as 
-input and returns another array of integers of length 2. The first element in the 
-returned array is the sum of all even numbers in the input array, and the second 
-element in the returned array is the sum of all odd numbers in the input array.
+Implement the Java function listed below:
+
+public static void printCalendar(int month, int year) {
+	/// do stuff here
+}
 */
 package com.epsilon.assignment.day.one;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
 public class AssignmentNine {
-	private static Scanner sc;
 
-	public static void main(String[] args) {
-		int size;
-		sc = new Scanner(System.in);
-		System.out.print(" Please Enter Number of elements in an array : ");
-		size = sc.nextInt();
-		int[] a = new int[size];
+	public static void printCalendar(int month, int year) {
+		int spaces = 1;
+		String[] months = { "", "January", "February", "March", "April", "May", "June", "July", "August", "September",
+				"October", "November", "December" };
 
-		System.out.print(" Please Enter " + size + " elements of an Array  : ");
-		for (int i = 0; i < size; i++) {
-			a[i] = sc.nextInt();
+		int[] days = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+		if ((((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) && month == 2)
+			days[month] = 29;
+
+		System.out.println("          " + months[month] + " " + year);
+
+		System.out.println("   Sun  Mon Tue   Wed Thu   Fri  Sat");
+
+		spaces = (days[month - 1] + spaces) % 7;
+
+		for (int i = 0; i < spaces; i++)
+			System.out.print("     ");
+		for (int i = 1; i <= days[month]; i++) {
+			System.out.printf(" %3d ", i);
+			if (((i + spaces) % 7 == 0) || (i == days[month]))
+				System.out.println();
 		}
-		System.out.println("Even and Odd of Array is " + Arrays.toString(sumOfEvensAndOdds(a)));
+		System.out.println();
 	}
 
-	public static int[] sumOfEvensAndOdds(int[] nums) {
-		int i, size, EvenSum = 0, OddSum = 0;
-		size = nums.length;
-		for (i = 0; i < size; i++) {
-			if (nums[i] % 2 == 0) {
-				EvenSum = EvenSum + nums[i];
-			} else {
-				OddSum = OddSum + nums[i];
-			}
-		}
-		int[] result = { EvenSum, OddSum };
-		return result;
+	public static void main(String[] args) {
+		printCalendar(8, 2018);
+		printCalendar(3, 2020);
 	}
 }
