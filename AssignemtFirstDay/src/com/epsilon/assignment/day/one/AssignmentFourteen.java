@@ -1,6 +1,5 @@
 /*
  #14 Implement the following function:
-
 public static void printAllCombinations(String word) {
 	// do stuff here
 }
