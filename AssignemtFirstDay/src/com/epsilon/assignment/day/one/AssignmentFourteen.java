@@ -10,35 +10,32 @@ and print all possible combinations of letters in the given word.
 
 package com.epsilon.assignment.day.one;
 
+import java.util.Scanner;
+
+@SuppressWarnings("resource")
 public class AssignmentFourteen {
 
-	// Function to print all the permutations of str
-	static void printPermutn(String str, String ans) {
+	static public void printAllCombinations(String input) {
+		printAllCombinations("", input);
+	}
 
-		// If string is empty
-		if (str.length() == 0) {
-			System.out.print(ans + " ");
-			return;
-		}
+	private static void printAllCombinations(String permutation, String input) {
+		if (input.length() == 0) {
+			System.out.println(permutation);
 
-		for (int i = 0; i < str.length(); i++) {
-
-			// ith character of str
-			char ch = str.charAt(i);
-
-			// Rest of the string after excluding
-			// the ith character
-			String ros = str.substring(0, i) + str.substring(i + 1);
-
-			// Recurvise call
-			printPermutn(ros, ans + ch);
+		} else {
+			for (int i = 0; i < input.length(); i++) {
+				printAllCombinations(permutation + input.charAt(i),
+						input.substring(0, i) + input.substring(i + 1, input.length()));
+			}
 		}
 	}
 
-	// Driver code
 	public static void main(String[] args) {
-		String s = "abb";
-		printPermutn(s, "");
-	}
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the Word: ");
+		String word = sc.nextLine();
+		printAllCombinations(word);
 
+	}
 }
