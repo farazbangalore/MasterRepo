@@ -35,8 +35,8 @@ public class AssignmentNineteen {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the Date in YYYY-MM Format");
 		input = sc.nextLine();
-		if (input.substring(5) != "-") {
-			throw new Exception("Inavlid Dat Format!");
+		if (!(input.substring(4, 5).equals("-"))) {
+			throw new Exception("Invalid Date Format!");
 		}
 		try {
 			year = Integer.parseInt(input.substring(0, 4));
