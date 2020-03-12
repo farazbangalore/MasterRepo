@@ -35,6 +35,5 @@ public class AssignmentFourteen {
 		System.out.println("Enter the Word: ");
 		String word = sc.nextLine();
 		printAllCombinations(word);
-
 	}
 }
