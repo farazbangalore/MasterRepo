@@ -16,11 +16,8 @@ public class AssignmentNineteen {
 			days[month] = 29;
 
 		System.out.println("          " + months[month] + " " + year);
-
 		System.out.println("   Sun  Mon Tue   Wed Thu   Fri  Sat");
-
 		spaces = (days[month - 1] + spaces) % 7;
-
 		for (int i = 0; i < spaces; i++)
 			System.out.print("     ");
 		for (int i = 1; i <= days[month]; i++) {
@@ -31,20 +28,22 @@ public class AssignmentNineteen {
 		System.out.println();
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		String input;
 		int year = 0;
 		int month = 0;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the Date in YYYY-MM Format");
 		input = sc.nextLine();
+		if (input.substring(5) != "-") {
+			throw new Exception("Inavlid Dat Format!");
+		}
 		try {
 			year = Integer.parseInt(input.substring(0, 4));
 			month = Integer.parseInt(input.substring(5, 7));
 			printCalendar(month, year);
 		} catch (Exception e) {
-			System.err.println("Inavlid date Format");
+			System.err.println("Inavlid Input!");
 		}
 	}
-
 }
