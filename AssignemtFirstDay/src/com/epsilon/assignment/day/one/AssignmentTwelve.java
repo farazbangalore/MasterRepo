@@ -7,7 +7,7 @@ package com.epsilon.assignment.day.one;
 import java.text.DecimalFormat;
 
 public class AssignmentTwelve {
-
+	// TODO: Convert to Indian Numbering System
 	private static final String[] tensNames = { "", " ten", " twenty", " thirty", " forty", " fifty", " sixty",
 			" seventy", " eighty", " ninety" };
 
