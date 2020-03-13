@@ -25,11 +25,11 @@ public class AssignmentNine {
 
 		spaces = (days[month - 1] + spaces) % 7;
 
-		for (int i = 0; i < spaces; i++)
+		for (int i = 0; i < spaces + 2; i++)
 			System.out.print("     ");
 		for (int i = 1; i <= days[month]; i++) {
 			System.out.printf(" %3d ", i);
-			if (((i + spaces) % 7 == 0) || (i == days[month]))
+			if (((i + spaces + 2) % 7 == 0) || (i == days[month]))
 				System.out.println();
 		}
 		System.out.println();
@@ -37,6 +37,6 @@ public class AssignmentNine {
 
 	public static void main(String[] args) {
 		printCalendar(8, 2018);
-		printCalendar(3, 2020);
+		printCalendar(1, 2020);
 	}
 }
