@@ -93,6 +93,13 @@ public class ContactsDaoHashMapImpl implements ContactsDao {
 
 	@Override
 	public List<Contact> getContactsByBirthDate(Date from, Date to) throws DaoException {
+		List<Contact> c1 = new ArrayList<Contact>();
+		for (Contact c : map.values()) {
+			if (c.getBirthDate().compareTo(from) > 0 && c.getBirthDate().compareTo(to) < 0) {
+				c1.add(c);
+			}
+			return c1;
+		}
 
 		return null;
 	}
