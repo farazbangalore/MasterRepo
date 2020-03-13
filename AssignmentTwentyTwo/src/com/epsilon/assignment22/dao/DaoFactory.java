@@ -12,18 +12,14 @@ public final class DaoFactory {
 	public static ContactsDao getContactsDao() throws DaoException {
 		switch (discriminator.toUpperCase()) {
 		case "JDBC":
-			// return new ContactsDaoJdbcImpl();
-			return new ContactsDaoJdbcImpl();
 			break;
 		case "HASHMAP":
 			return new ContactsDaoHashMapImpl();
 		case "CSV":
 			// return new ContactsDaoCsvImpl();
-			return new ContactsDaoJdbcImpl();
 			break;
 		case "ARRAYLIST":
 			// return new ContactsDaoArrayListImpl();
-			return new ContactsDaoJdbcImpl();
 			break;
 		}
 		throw new DaoException("No implementation found for discriminator: " + discriminator);

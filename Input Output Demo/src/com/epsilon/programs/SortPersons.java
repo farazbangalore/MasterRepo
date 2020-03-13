@@ -11,7 +11,7 @@ public class SortPersons {
 
 	public static void main(String[] args) {
 
-		List<Person> people = new ArrayList();
+		List<Person> people = new ArrayList<>();
 		people.add(new Person("Faraz", 45, 6.8));
 		people.add(new Person("Faraz", 54, 5.6));
 		people.add(new Person("Faraz", 65, 5.8));
