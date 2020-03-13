@@ -59,7 +59,6 @@ public class Main {
 					editAndUpdateContact(contactToEdit);
 				}
 				break;
-
 			}
 		}
 

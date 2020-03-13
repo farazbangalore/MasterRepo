@@ -1,5 +1,6 @@
 package com.epsilon.assignment22.dao.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -19,61 +20,80 @@ public class ContactsDaoHashMapImpl implements ContactsDao {
 
 	@Override
 	public void addContact(Contact contact) throws DaoException {
-		// TODO Auto-generated method stub
-
+		this.map.put(contact.getId(), contact);
 	}
 
 	@Override
 	public Contact getContact(int id) throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		return map.get(id);
 	}
 
 	@Override
 	public void updateContact(Contact contact) throws DaoException {
-		// TODO Auto-generated method stub
+		map.replace(contact.getId(), contact);
 
 	}
 
 	@Override
 	public void deleteContact(int id) throws DaoException {
-		// TODO Auto-generated method stub
+		map.remove(id);
 
 	}
 
 	@Override
 	public Contact getContactByEmail(String email) throws DaoException {
-		// TODO Auto-generated method stub
+		for (Contact c : map.values()) {
+			if (c.getEmail().equals(email)) {
+				return c;
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public Contact getContactByPhone(String phone) throws DaoException {
-		// TODO Auto-generated method stub
+		for (Contact c : map.values()) {
+			if (c.getPhone().equals(phone)) {
+				return c;
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public List<Contact> getContactsByLastname(String lastname) throws DaoException {
-		// TODO Auto-generated method stub
+		List<Contact> c1 = new ArrayList<Contact>();
+		for (Contact c : map.values()) {
+			if (c.getLastname().equals(lastname)) {
+				c1.add(c);
+			}
+			return c1;
+		}
 		return null;
 	}
 
 	@Override
 	public List<Contact> getContactsByCity(String city) throws DaoException {
-		// TODO Auto-generated method stub
+		List<Contact> c1 = new ArrayList<Contact>();
+		for (Contact c : map.values()) {
+			if (c.getCity().equals(city)) {
+				c1.add(c);
+			}
+			return c1;
+		}
 		return null;
 	}
 
 	@Override
 	public List<Contact> getContacts() throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Contact> contact = new ArrayList<Contact>();
+		contact.addAll(map.values());
+		return contact;
 	}
 
 	@Override
 	public List<Contact> getContactsByBirthDate(Date from, Date to) throws DaoException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 }
