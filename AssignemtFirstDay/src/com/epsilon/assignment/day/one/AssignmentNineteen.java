@@ -29,7 +29,7 @@ public class AssignmentNineteen {
 		// Pad space before the first day of the month
 		int i = 0;
 		for (i = 0; i < startDay; i++)
-			System.out.print("    ");
+			System.out.print("   0");
 		for (i = 1; i <= numberOfDaysInMonth; i++) {
 			if (i < 10) {
 				System.out.print("   " + i);
@@ -95,7 +95,7 @@ public class AssignmentNineteen {
 		try {
 			year = Integer.parseInt(input.substring(0, 4));
 			month = Integer.parseInt(input.substring(5, 7));
-			printMonth(month, year);
+			printMonth(year, month);
 		} catch (Exception e) {
 			System.err.println("Inavlid Input!");
 		}
