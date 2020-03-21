@@ -57,12 +57,15 @@ class AssignmentTwo {
 		boolean result_2 = isValidDate(2018, 2, 29);
 		boolean result_3 = isValidDate(2016, 2, 29);
 		boolean result_4 = isValidDate(1998, 4, 31);
+		boolean result_5 = isValidDate(1998, 3, 31);
 
 		// Print Results
 		System.out.println("2018,13,1 is " + result_1);
 		System.out.println("2018,2,29 is " + result_2);
 		System.out.println("2006,2,29 is " + result_3);
 		System.out.println("1998,4,31 is " + result_4);
+
+		System.out.println("1998,3,31 is " + result_5);
 
 	}
 }
